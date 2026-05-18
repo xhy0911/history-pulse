@@ -13,11 +13,14 @@ jobs:
         with:
           python-version: '3.11'
       - name: Run
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
         run: python history_pulse.py
-      - name: Deploy
+      - name: Deploy to Pages
         run: |
           git config --global user.name 'auto'
           git config --global user.email 'auto@bot.com'
           git add _site/
-          git commit -m 'daily update' || true
+          git diff --cached --quiet || git commit -m 'daily update'
           git push
