@@ -9,7 +9,7 @@ REPO = "history-pulse"
 URL = f"https://{USER}.github.io/{REPO}/"
 DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_site")
 
-SRC = [("OECD Edu","https://oecdedutoday.com/feed/","核心"),("Hechinger","https://hechingerreport.org/feed/","核心"),("Brookings Edu","https://www.brookings.edu/feed/?topic=education","核心"),("Harvard Ed","https://www.gse.harvard.edu/feed","核心"),("EduNext","https://www.educationnext.org/feed/","核心"),("Education Week","https://www.edweek.org/feed/?topic=teaching","核心"),("TES Global","https://www.tes.com/rss/news.xml","核心"),("Inside Higher Ed","https://www.insidehighered.com/rss/news","核心")]
+SRC = [("Nature-History","https://www.nature.com/subjects/history.rss","CSSCI"),("Smithsonian","https://www.smithsonianmag.com/rss/history/","核心"),("JSTOR Daily","https://daily.jstor.org/feed/","核心"),("Medievalists","https://www.medievalists.net/feed/","普通"),("Ars Technica","https://feeds.arstechnica.com/arstechnica/science","普通"),("School History","https://schoolhistory.co.uk/feed/","普通"),("OECD Edu","https://oecdedutoday.com/feed/","核心"),("Hechinger","https://hechingerreport.org/feed/","核心"),("Brookings Edu","https://www.brookings.edu/feed/?topic=education","核心"),("Harvard Ed","https://www.gse.harvard.edu/feed","核心"),("EduNext","https://www.educationnext.org/feed/","核心"),("EdWeek","https://www.edweek.org/feed/?topic=teaching","核心"),("History Today","https://www.historytoday.com/feed","核心"),("Live Science History","https://www.livescience.com/feed/history.xml","核心"),("BBC History","https://www.bbc.co.uk/history/feed/rss.xml","核心")]
 
 def log(m): print(f"[{datetime.now().strftime('%H:%M:%S')}] {m}")
 
@@ -38,27 +38,6 @@ def translate(text):
 
 def esc(t): return t.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;").replace('"','&quot;')
 
-# 历史教育相关关键词——只有匹配这些的文章才会被收录
-HISTORY_EDU_KW = [
-    "history teach", "history learn", "history class", "history curricul", "history lesson",
-    "history educat", "history student", "history teacher", "history school", "history course",
-    "history program", "history department", "history major", "history degree",
-    "historical think", "historical literac", "historical inquir", "historical analys",
-    "historical reason", "historical underst", "historical knowledg", "historical skill",
-    "historical competenc", "historical narrat", "historical perspec", "historical empath",
-    "historical consciou", "historical memor", "historical interpret", "historical evid",
-    "historical source", "primary source", "secondary source", "document analysis",
-    "oral history", "public history", "digital history", "local history",
-    "world history", "us history", "american history", "european history",
-    "asian history", "african history", "ancient history", "medieval history",
-    "modern history", "social studies", "civics educ", "citizenship educ",
-    "heritage educ", "museum educ", "cultural heritage",
-    "history class", "history exam", "history test", "history textbook",
-    "history essay", "history paper", "history project", "history assignment",
-    "history confer", "history workshop", "history semin", "history lecture",
-    "history educ policy", "history educ reform", "history educ research",
-]
-
 log("抓取RSS...")
 art = []
 seen = set()
@@ -70,21 +49,17 @@ for nm, url, lv in SRC:
         ns = ""
         if rt.tag == "{http://www.w3.org/2005/Atom}feed": ns = "{http://www.w3.org/2005/Atom}"
         its = rt.findall(".//item") or rt.findall(f".//{ns}entry")
-        for it in its[:10]:
+        count = 0
+        for it in its:
             t = (it.find("title") or it.find(f"{ns}title"))
             ti = t.text.strip() if t is not None and t.text else ""
-            if not ti: continue
+            if not ti or ti.lower() in seen: continue
+            seen.add(ti.lower())
             de = it.find("description") or it.find(f"{ns}summary") or it.find("summary")
             ds = ""
             if de is not None:
                 ds = de.text or "".join(de.itertext()) or ""
                 ds = re.sub(r"<[^>]+>", "", ds).strip()[:300]
-            # 检查是否与历史教育相关
-            check_text = (ti + " " + ds).lower()
-            if not any(kw in check_text for kw in HISTORY_EDU_KW):
-                continue
-            if ti.lower() in seen: continue
-            seen.add(ti.lower())
             lk = ""
             l = it.find("link") or it.find(f"{ns}link")
             if l is not None: lk = l.get("href","") or l.text or ""
@@ -97,6 +72,8 @@ for nm, url, lv in SRC:
             sc = round(5.0 + {"CSSCI":2.5,"核心":1.5,"普通":0.5}.get(lv,0.5) + (1.0 if len(ti)>40 else 0), 1)
             cn_title = translate(ti)
             art.append({"id":len(art)+1,"title":ti,"title_cn":cn_title,"src":nm,"lv":lv,"sc":min(10,sc),"date":dt,"desc":ds,"link":lk})
+            count += 1
+            if count >= 8: break
     except:
         pass
     log(f"  {nm}")
@@ -105,7 +82,6 @@ art.sort(key=lambda a:-a["sc"])
 log(f"共 {len(art)} 篇")
 os.makedirs(DIR, exist_ok=True)
 
-# === HTML ===
 CSS = """
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,"Noto Sans SC",sans-serif;background:#f5f0eb;color:#2c1810;line-height:1.6}
@@ -164,8 +140,6 @@ for a in art:
 
 log(f"{len(art)+1}页")
 
-# === DEPLOY ===
-log("部署到GitHub...")
 HDRS = {"Authorization":"token "+TOKEN,"Accept":"application/vnd.github.v3+json"}
 def sha(p):
     try: return json.loads(urllib.request.urlopen(urllib.request.Request(f"https://api.github.com/repos/{USER}/{REPO}/contents/{p}",headers=HDRS),timeout=10).read()).get("sha")
@@ -186,7 +160,6 @@ for f in fl:
     if up(f,c): ok += 1
 log(f"上传 {ok}/{len(fl)}")
 
-# === PUSH ===
 log("推送微信...")
 today = datetime.now().strftime("%Y-%m-%d")
 msg = f"<h2 style='color:#2d6a4f;text-align:center'>🎓 历史教育学 · 全球动态</h2><p style='text-align:center;color:#888;font-size:13px'>{today} · {len(art)}篇</p><p style='text-align:center'><a href='{URL}' style='display:inline-block;background:#2d6a4f;color:#fff;padding:8px 20px;border-radius:6px;text-decoration:none;font-size:14px;margin:4px'>🌐 打开完整网站</a></p><hr style='border:none;border-top:2px solid #2d6a4f;margin:12px 0'>"
