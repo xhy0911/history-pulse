@@ -3,26 +3,34 @@
 body{font-family:-apple-system,"Noto Sans SC",sans-serif;background:#f5f0eb;color:#2c1810;line-height:1.6}
 a{color:#2d6a4f;text-decoration:none}
 a:hover{text-decoration:underline}
-nav{background:#2d6a4f;padding:10px 16px;color:#fff;text-align:center;font-size:16px;font-weight:700}
+nav{background:#2d6a4f;padding:12px 16px;color:#fff;text-align:center;font-size:15px;font-weight:700;position:sticky;top:0;z-index:100}
 .c{max-width:800px;margin:0 auto;padding:16px}
-h2{font-size:18px;color:#2d6a4f;margin:20px 0 10px;border-bottom:2px solid #2d6a4f;padding-bottom:4px}
-.card{background:#fff;border-radius:8px;padding:12px 14px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.06);border-left:3px solid #2d6a4f}
+h1{font-size:20px;color:#2d6a4f;margin:16px 0;text-align:center}
+h2{font-size:16px;color:#2d6a4f;margin:20px 0 10px;border-bottom:2px solid #2d6a4f;padding-bottom:4px}
+.card{background:#fff;border-radius:8px;padding:12px 14px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.06);border-left:3px solid #2d6a4f;transition:.2s}
+.card:hover{box-shadow:0 3px 10px rgba(0,0,0,.1)}
 .card .m{font-size:11px;color:#888;margin-bottom:4px}
 .card .en{font-size:13px;color:#666;font-style:italic;margin-bottom:2px}
 .card .cn{font-size:14px;color:#2c1810;font-weight:600}
-.region-box{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:10px;padding:16px;margin-bottom:12px}
-.region-box .name{font-size:20px;font-weight:700;color:#1b5e20}
-.region-box .tag{display:inline-block;background:#2d6a4f;color:#fff;padding:2px 10px;border-radius:10px;font-size:11px;margin:4px 0}
-.region-box .desc{font-size:13px;color:#333;margin:6px 0}
-.region-box .history{font-size:12px;color:#555;margin-top:6px;line-height:1.6}
-.knowledge-box{background:#fff;border-radius:10px;padding:14px;margin-bottom:8px;border-left:3px solid #1565c0}
-.knowledge-box .term{font-size:15px;font-weight:700;color:#1565c0}
-.knowledge-box .field{font-size:11px;color:#888;margin:2px 0}
-.knowledge-box .def{font-size:13px;color:#444;margin-top:4px;line-height:1.6}
-.book-box{background:#fff3e0;border-radius:10px;padding:14px;margin-bottom:12px;border-left:3px solid #e65100}
-.book-box .title{font-size:15px;font-weight:700;color:#e65100}
-.book-box .author{font-size:12px;color:#888}
-.book-box .why{font-size:13px;color:#444;margin-top:4px;line-height:1.6}
+.reg{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:10px;padding:16px;margin-bottom:12px}
+.reg .n{font-size:18px;font-weight:700;color:#1b5e20}
+.reg .t{display:inline-block;background:#2d6a4f;color:#fff;padding:2px 10px;border-radius:10px;font-size:11px}
+.reg .d{font-size:13px;color:#333;margin:6px 0;line-height:1.6}
+.kb{background:#e3f2fd;border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid #1565c0}
+.kb .tm{font-size:15px;font-weight:700;color:#1565c0}
+.kb .fd{font-size:11px;color:#888}
+.kb .df{font-size:13px;color:#444;margin-top:4px;line-height:1.6}
+.bb{background:#fff3e0;border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid #e65100}
+.bb .tl{font-size:15px;font-weight:700;color:#e65100}
+.bb .au{font-size:12px;color:#888}
+.bb .wy{font-size:13px;color:#444;margin-top:4px;line-height:1.6}
 .f{text-align:center;padding:20px;color:#888;font-size:12px;border-top:1px solid #ddd;margin-top:30px}
 .g{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px}
-</style></head><body><nav>🎓 历史教育学 · 每日简报</nav><div class='c'><h2>📰 今日热点</h2><div class='g'><div class='card'><div class='m'>OECD Edu ⭐7.5 </div><div class='en'>The private-public sector divide in early childhood education and care</div><div class='cn'>幼儿教育和保育方面的私营部门和公共部门之间的差距</div></div><div class='card'><div class='m'>OECD Edu ⭐7.5 </div><div class='en'>Where the runway begins: How São Paulo is building a new operating system for learning</div><div class='cn'>跑道起点：圣保罗如何构建新的学习操作系统</div></div><div class='card'><div class='m'>OECD Edu ⭐7.5 </div><div class='en'>How to balance teacher autonomy with coherence across classrooms?</div><div class='cn'>如何平衡教师的自主性和课堂的一致性？</div></div><div class='card'><div class='m'>OECD Edu ⭐7.5 </div><div class='en'>From Bratislava to the classroom: What young people want from education in 2040</div><div class='cn'>从布拉迪斯拉发到课堂：2040 年年轻人希望从教育中获得什么</div></div><div class='card'><div class='m'>OECD Edu ⭐7.5 </div><div class='en'>From research on the shelf to research in use</div><div class='cn'>从货架研究到使用研究</div></div><div class='card'><div class='m'>OECD Edu ⭐7.5 </div><div class='en'>Greece’s Education Moment: Empowering teachers and schools</div><div class='cn'>希腊的教育时刻：赋予教师和学校权力</div></div><div class='card'><div class='m'>OECD Edu ⭐7.5 </div><div class='en'>Why effective ECEC communicates with parents</div><div class='cn'>为什么 ECEC 需要与家长进行有效的沟通</div></div><div class='card'><div class='m'>Hechinger ⭐7.5 </div><div class='en'>Texas’ discipline push sends kids to ‘jail-like’ campuses</div><div class='cn'>德克萨斯州的纪律推动将孩子们送进“监狱般”的校园</div></div></div><h2>🌍 认识一个地方</h2><div class='region-box'><div class='name'>🌍 伊斯坦布尔</div><div><span class='tag'>城市</span><span class='tag'>欧亚交界</span></div><div class='desc'>世界上唯一横跨欧亚两洲的城市。原名君士坦丁堡。拥有1500万人口，是土耳其最大城市。圣索菲亚大教堂见证了一千多年的宗教变迁。</div><div class='history'><strong>📜 历史概览：</strong>公元330年罗马皇帝君士坦丁大帝定为东罗马帝国首都。1453年被奥斯曼帝国苏丹穆罕默德二世攻陷，改名伊斯坦布尔。1923年土耳其共和国成立后，首都迁至安卡拉，但伊斯坦布尔仍是经济文化中心。</div></div><h2>📖 书籍推荐</h2><div class='book-box'><div class='title'>📖 《学会提问》</div><div class='author'>尼尔·布朗</div><div class='why'><strong>推荐理由：</strong>批判性思维训练经典。教人区分事实与观点、识别逻辑谬误、评估证据质量。对历史教师培养学生的历史思维能力极有帮助。</div></div><h2>📌 今日知识卡</h2><div class='knowledge-box'><div class='term'>📌 建构主义</div><div class='field'>教育学</div><div class='def'>学习者不是被动接收知识，而是在已有经验基础上主动建构知识。皮亚杰的认知建构主义和维果茨基的社会建构主义是两大流派。强调情境化、协作式、自主探究的学习方式。</div></div><div class='knowledge-box'><div class='term'>📌 元认知</div><div class='field'>心理学</div><div class='def'>对自己认知过程的认知和调控的能力。弗拉维尔于1970年代提出。包括元认知知识（知道什么策略有效）和元认知调控（计划、监控、评价）。是区分优秀学习者和普通学习者的关键因素。</div></div><div class='knowledge-box'><div class='term'>📌 自我效能感</div><div class='field'>心理学</div><div class='def'>班杜拉1977年提出的概念，指个体对自己完成特定任务的能力信念。不同于自信（泛指），自我效能感是具体领域相关的。高自我效能感的人更愿意接受挑战、面对困难更坚持。</div></div></div><div class='f'>每日更新 · 历史教育学 · 全球视野</div></body></html>
+.btn{display:inline-block;background:#2d6a4f;color:#fff;padding:6px 14px;border-radius:6px;font-size:12px;margin:4px 2px}
+.d-reg{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:10px;padding:20px;margin-bottom:16px}
+.d-reg h1{font-size:24px;color:#1b5e20;text-align:left}
+.d-reg .tag{display:inline-block;background:#2d6a4f;color:#fff;padding:2px 12px;border-radius:10px;font-size:12px}
+.d-reg .s{font-size:14px;color:#333;line-height:1.8;margin:10px 0}
+.d-reg .info{background:#fff;border-radius:8px;padding:12px;margin-top:10px;font-size:13px;color:#555}
+@media(max-width:600px){.g{grid-template-columns:1fr}}
+</style></head><body><nav>🎓 历史教育学 · 每日简报 · <a href='https://xhy0911.github.io/history-pulse/' style='color:#fff'>🌐</a></nav><div class='c'><div style='background:linear-gradient(135deg,#e8f5e9,#2d6a4f);color:#fff;padding:24px;border-radius:12px;text-align:center;margin-bottom:16px'><div style='font-size:18px;font-weight:700'>🎓 历史教育学</div><div style='font-size:12px;opacity:.9;margin-top:4px'>2026年05月28日 · 你的每日知识早餐</div></div><h2>📰 今日热点 <span style='font-size:12px;color:#888;font-weight:400'>(24篇)</span></h2><div class='card'><div class='m'>OECD Edu ⭐7.5 </div><div class='en'>The private-public sector divide in early childhood education and care</div><div class='cn'>幼儿教育和保育方面的私营部门和公共部门之间的差距</div></div><div class='card'><div class='m'>OECD Edu ⭐7.5 </div><div class='en'>Where the runway begins: How São Paulo is building a new operating system for learning</div><div class='cn'>跑道起点：圣保罗如何构建新的学习操作系统</div></div><div class='card'><div class='m'>OECD Edu ⭐7.5 </div><div class='en'>How to balance teacher autonomy with coherence across classrooms?</div><div class='cn'>如何平衡教师的自主性和课堂的一致性？</div></div><div class='card'><div class='m'>OECD Edu ⭐7.5 </div><div class='en'>From Bratislava to the classroom: What young people want from education in 2040</div><div class='cn'>从布拉迪斯拉发到课堂：2040 年年轻人希望从教育中获得什么</div></div><div class='card'><div class='m'>OECD Edu ⭐7.5 </div><div class='en'>Greece’s Education Moment: Empowering teachers and schools</div><div class='cn'>希腊的教育时刻：赋予教师和学校权力</div></div><div class='card'><div class='m'>OECD Edu ⭐7.5 </div><div class='en'>How to effectively use Generative AI in education</div><div class='cn'>如何在教育中有效利用生成式人工智能</div></div><div class='card'><div class='m'>Hechinger ⭐7.5 </div><div class='en'>Four takeaways from our investigation into Texas’ disciplinary schools</div><div class='cn'>我们对德克萨斯州纪律学校调查的四个要点</div></div><div class='card'><div class='m'>Hechinger ⭐7.5 </div><div class='en'>Women rule (in college and graduate and professional schools)</div><div class='cn'>女性统治（在大学、研究生院和职业学校）</div></div><h2>🌍 认识一个地方 · <a href='region.html'>墨西哥</a></h2><div class='reg'><div class='n'>🌍 墨西哥</div><div><span class='t'>国家</span><span class='t'>拉丁美洲</span></div><div class='d'>北美洲第三大国家，面积196万平方公里。拥有69种土著语言。亡灵节（Día de Muertos）被列为UNESCO非物质文化遗产。龙舌兰酒（Tequila）原产地。… <a href='region.html' style='font-size:12px'>[查看详情]</a></div></div><h2>📌 今日知识卡 · <a href='knowledge.html'>查看全部</a></h2><div class='kb'><div class='tm'>📌 记忆之场</div><div class='fd'>历史学</div><div class='df'>法国史学家皮埃尔·诺拉提出的概念，指集体记忆凝聚的符号性场所或事物（如国庆日、纪念碑、档案）。认为现代社会的记忆已经断裂，需要人造的&quot;记忆之场&quot;来维系。… <a href='knowledge.html' style='font-size:12px'>[详情]</a></div></div><div class='kb'><div class='tm'>📌 核心素养</div><div class='fd'>教育学</div><div class='df'>学生应具备的必备品格和关键能力，OECD于1997年提出。中国2016年发布《中国学生发展核心素养》，包括文化基础、自主发展、社会参与三大维度，共18个基本要点。… <a href='knowledge.html' style='font-size:12px'>[详情]</a></div></div><h2>📖 今日推荐 · <a href='book.html'>《枪炮、病菌与钢铁》</a></h2><div class='bb'><div class='tl'>📖 《枪炮、病菌与钢铁》</div><div class='au'>贾雷德·戴蒙德</div><div class='wy'>从地理和环境角度解释世界各大洲发展差异。… <a href='book.html' style='font-size:12px'>[查看梗概]</a></div></div></div><div class='f'>每日更新 · 全球视野 · 充实你的知识储备</div></body></html>
