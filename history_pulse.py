@@ -240,3 +240,9 @@ try:
     else: log(f"✖{rp}")
 except Exception as e: log(f"✖{e}")
 print(f"\n完成！{len(art)}篇")
+print("\n===== 公众号草稿（直接复制）=====")
+print(f"标题：🎓 历史教育学 · 每日简报 {today}")
+print()
+# 这里会输出格式化好的公众号图文内容
+...
+print("===================================")
